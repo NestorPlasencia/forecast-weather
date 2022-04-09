@@ -1,6 +1,7 @@
 import { Card } from "../../components/Card/Card";
 import { Container } from "../../components/Container/Container";
 import { Switch } from "../../components/Switch/Switch";
+import { Title } from "../../components/Title/Title";
 import styles from "./current.module.css";
 
 const Current = () => {
@@ -9,7 +10,7 @@ const Current = () => {
       <Card>
         <div className={styles.container}>
           <div className={styles.column}>
-            <h2 className={styles.title}>Current Weather</h2>
+            <Title title="Current Weather" />
             <div className={styles.temperature_container}>
               <p className={styles.temperature}>20°C</p>
               <img src="./assets/icons/01d.svg" alt="icon" />

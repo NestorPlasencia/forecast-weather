@@ -23,18 +23,6 @@
     flex: 1 0 auto;
 }
 
-.title{
-    font-size: 1.4rem;
-    font-weight: 600;
-    text-align: center;
-}
-
-@media (min-width: 576px) {
-    .title{
-        text-align: start;
-    }
-}
-
 .temperature_container {
     display: flex;
     align-items: center;

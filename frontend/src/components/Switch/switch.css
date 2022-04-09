@@ -40,8 +40,8 @@
     display: flex;
     position: relative;
     transition: all 350ms ease-in;
+    cursor: pointer;
 }
-
 
 .toggle--label:before {
     animation-name: reverse;
@@ -58,7 +58,6 @@
     border-radius: calc(var(--height)*0.82);
     background: var(--button-background);
 }
-
 
 @keyframes switch {
     0% {
@@ -91,7 +90,6 @@
         left: calc(var(--height)*0.04);
     }
 }
-
 
 .toggle--C{
     color: var(--text-inactive);

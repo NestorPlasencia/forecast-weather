@@ -1,0 +1,67 @@
+.container{
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+}
+
+@media (min-width: 576px) {
+    .container {
+        margin-bottom: 0;
+        margin-right: 1rem;
+    }
+}
+
+.title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+@media (min-width: 576px) {
+    .body {
+        flex-direction: column;
+    }
+}
+
+.icon {
+    width: 6rem;
+}
+
+.weather_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather_main dd {
+    font-size: 0.8rem;
+    margin-left: 0.7rem;
+}
+
+.temperatures {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+.temperatures .max {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-right: 1rem;
+}
+
+.temperatures .min {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.description{
+    text-align: center;
+    font-size: 0.8rem;
+}
