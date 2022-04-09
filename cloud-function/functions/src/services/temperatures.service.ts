@@ -1,4 +1,3 @@
-
 import {Temperatures} from "../models/temperatures.model";
 import {TemperaturesExport} from "../dto/temperatures.dto";
 

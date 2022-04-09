@@ -1,4 +1,3 @@
-
 import {Geolocation} from "../models/geolocation.model";
 import {OneCall} from "../models/onecall.model";
 import {Response} from "../models/response.model";
