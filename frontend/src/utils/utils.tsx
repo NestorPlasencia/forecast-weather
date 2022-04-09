@@ -10,7 +10,7 @@ export const formatWindSpeed = (unit: string, speed: number) => {
   if (unit === "C") {
     return Math.round(mpsToKmph(speed)) + " km/h";
   } else {
-    return Math.round(mpsToMph(speed)) + " m/h";
+    return Math.round(mpsToMph(speed)) + " mph";
   }
 };
 

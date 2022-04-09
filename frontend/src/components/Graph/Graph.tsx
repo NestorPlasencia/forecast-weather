@@ -1,9 +1,8 @@
-type Props = {
-  times: number[];
-  temps: number[];
-};
+import { useUnit } from "../../hooks/unit";
+import { formatTemperature } from "../../utils/utils";
+const Graph = ({ times, temps }: { times: number[]; temps: number[] }) => {
+  const { unit } = useUnit();
 
-const Graph = ({ times, temps }: Props) => {
   const formatHours = (dt: number): string => {
     const date = new Date(dt * 1000);
     let hours = date.getHours();
@@ -38,7 +37,7 @@ const Graph = ({ times, temps }: Props) => {
   for (let i = 0; i < temps.length; i = i + 2) {
     tLabels.push(
       <text key={i} x={(i + 1) * 50 - 20} fill="#eee" y={points[i][1] - 20}>
-        {temps[i].toFixed(1) + "°C"}
+        {unit && formatTemperature(unit, temps[i])}
       </text>
     );
   }
