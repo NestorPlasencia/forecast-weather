@@ -5,16 +5,58 @@
   <meta charset="utf-8" />
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
+  <meta name="theme-color" content="#4D476F" />
+  <meta name="description" content="Weather forecasts of your city." />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title>Forecast Weather</title>
+  <title>Weather Forecasts</title>
+  <style>
+    body {
+      background-color: #4D476F;
+      font-family: sans-serif;
+    }
+
+    .full-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      height: 100vh;
+    }
+
+    .loading {
+      width: 150px;
+      animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    }
+
+    .full-container p.loading-text {
+      font-size: 2rem;
+      color: #72b9d5;
+      font-weight: 600;
+      letter-spacing: 0.05rem;
+      margin: 1rem;
+    }
+
+    @keyframes loading {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
 </head>
 
-<body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
+<body><noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
+  <div class="full-container hide-before-js-charge">
+    <img class="loading" src="%PUBLIC_URL%/assets/icons/01n.svg">
+    <p class="loading-text">Loading ...</p>
+  </div>
 </body>
 
 </html>
