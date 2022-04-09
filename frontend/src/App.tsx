@@ -1,10 +1,11 @@
+import { Current } from "./containers/Current/Current";
 
-const  App= ()=> {
+const App = () => {
   return (
-    <div >
-      
-    </div>
+    <main>
+      <Current />
+    </main>
   );
-}
+};
 
-export  {App};
+export { App };
