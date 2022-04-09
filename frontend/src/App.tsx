@@ -1,13 +1,20 @@
 import { Current } from "./containers/Current/Current";
-import { Hourly } from "./containers/Hourly/Hourly";
 import { Daily } from "./containers/Daily/Daily";
+import { Hourly } from "./containers/Hourly/Hourly";
+import { useData } from "./hooks/data";
 
 const App = () => {
+  const { data, loading } = useData();
+
   return (
     <main>
-      <Current />
-      <Daily />
-      <Hourly />
+      {data?.location && (
+        <>
+          <Current />
+          <Daily />
+          <Hourly />
+        </>
+      )}
     </main>
   );
 };

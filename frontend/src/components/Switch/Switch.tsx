@@ -1,14 +1,20 @@
 import "./switch.css";
 
-const Switch = () => {
-  const handleChange = () => {};
+const Switch = ({
+  checked = false,
+  onChange = () => {},
+}: {
+  checked?: boolean;
+  onChange?: () => void;
+}) => {
   return (
     <div className="toggle--checkbox--container">
       <input
         type="checkbox"
         id="toggle"
         className="toggle--checkbox"
-        onChange={handleChange}
+        onChange={onChange}
+        checked={checked}
       />
       <label htmlFor="toggle" className="toggle--label">
         <span className="toggle--C">°C</span>

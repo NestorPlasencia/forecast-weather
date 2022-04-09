@@ -1,10 +1,6 @@
 import styles from "./card.module.css";
 
-type Props = {
-  children: JSX.Element;
-};
-
-const Card = ({ children }: Props) => {
+const Card = ({ children }: { children: JSX.Element }) => {
   return <article className={styles.card}>{children}</article>;
 };
 
