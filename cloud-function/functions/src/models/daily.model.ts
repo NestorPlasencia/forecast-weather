@@ -1,5 +1,4 @@
 import {Temperatures} from "./temperatures.model";
-import {TemperatureSensations} from "./temperaturesSensations.model";
 import {Weather} from "./weather.model";
 
 export interface Daily {
@@ -10,15 +9,17 @@ export interface Daily {
     moonset: number;
     moon_phase: number;
     temp: Temperatures;
-    feels_like: TemperatureSensations;
+    feels_like: Temperatures;
     pressure: number;
     humidity: number;
     dew_point: number;
     wind_speed: number;
     wind_deg: number;
-    weather: Weather[];
+    wind_gust?: number;
+    weather: Weather;
     clouds: number;
     pop: number;
     rain?: number;
-    uvi?: number;
+    snow?: number;
+    uvi: number;
 }

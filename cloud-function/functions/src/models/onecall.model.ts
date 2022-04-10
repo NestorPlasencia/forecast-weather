@@ -2,7 +2,6 @@ import {Alert} from "./alert.model";
 import {Current} from "./current.model";
 import {Daily} from "./daily.model";
 import {Hourly} from "./hourly.model";
-import {Minutely} from "./minutely.model";
 
 export interface OneCall {
     lat: number;
@@ -10,7 +9,10 @@ export interface OneCall {
     timezone: string;
     timezone_offset: number;
     current: Current;
-    minutely?: Minutely[];
+    minutely?: {
+        dt: number;
+        precipitation: number;
+    }[];
     hourly: Hourly[];
     daily: Daily[];
     alerts?: Alert[];

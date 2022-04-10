@@ -20,5 +20,5 @@ export interface Hourly {
         "1h"?: number;
     };
     pop: number;
-    weather: Weather[];
+    weather: Weather;
 }

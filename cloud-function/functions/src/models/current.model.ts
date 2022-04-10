@@ -21,5 +21,5 @@ export interface Current {
     snow: {
         "1h"?: number;
     };
-    weather: Weather[];
+    weather: Weather;
 }
