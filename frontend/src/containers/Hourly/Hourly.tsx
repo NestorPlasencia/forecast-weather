@@ -1,11 +1,14 @@
 import { Card } from "../../components/Card/Card";
 import { Container } from "../../components/Container/Container";
 import { Graph } from "../../components/Graph/Graph";
+import { Hidder } from "../../components/Hider/Hider";
+import { Padder } from "../../components/Padder/Padder";
 import { Title } from "../../components/Title/Title";
 import { useData } from "../../hooks/data";
 import { useSelection } from "../../hooks/selection";
 import { formatLocalDateLong } from "../../utils/formats";
 import { getDateFromDt, isSameDate } from "../../utils/utils";
+import { Hour } from "../Hour/Hour";
 
 const Hourly = () => {
   const { data } = useData();
@@ -35,7 +38,18 @@ const Hourly = () => {
         {data?.weather.hourly && selectDay && (
           <>
             <Title title={title} padding={true} />
-            <Graph times={dts} temps={temps} />
+            <Hidder size="xs" base="show">
+              <Graph times={dts} temps={temps} />
+            </Hidder>
+            <Hidder size="xs" base="hide">
+              <Padder>
+                <>
+                  {temps.map((e, i) => (
+                    <Hour dt={dts[i]} temp={e} key={e} />
+                  ))}
+                </>
+              </Padder>
+            </Hidder>
           </>
         )}
       </Card>

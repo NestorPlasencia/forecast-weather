@@ -1,5 +1,5 @@
 import { useUnit } from "../../hooks/unit";
-import { formatTemperature } from "../../utils/formats";
+import { formatHours, formatTemperature } from "../../utils/formats";
 import { Spline } from "../../utils/spline";
 
 const Graph = ({
@@ -29,7 +29,6 @@ const Graph = ({
 
   const smoothPoints = (x: number[], y: number[], n: number) => {
     const space = (x[x.length - 1] - x[0]) / n;
-    console.log(space);
     const spline = new Spline(x, y);
     const nx = [];
     const ny = [];
@@ -40,14 +39,6 @@ const Graph = ({
     }
     nx[n - 1] = x[x.length - 1];
     return [nx, ny];
-  };
-
-  const formatHours = (dt: number): string => {
-    const date = new Date(dt * 1000);
-    let hours = date.getHours();
-    var amOrPm = hours >= 12 ? "pm" : "am";
-    hours = hours % 12;
-    return hours + " " + amOrPm;
   };
 
   const generateTemperaturePoints = (temps: number[]) => {

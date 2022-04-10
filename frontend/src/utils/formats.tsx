@@ -47,3 +47,11 @@ export const formatLocalDateTime = (dt: number) => {
   });
   return `${dayOfWeek}, ${month} ${day} ${time}`;
 };
+
+export const formatHours = (dt: number): string => {
+  const date = new Date(dt * 1000);
+  let hours = date.getHours();
+  var amOrPm = hours >= 12 ? "pm" : "am";
+  hours = hours % 12;
+  return hours + " " + amOrPm;
+};

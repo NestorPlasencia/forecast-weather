@@ -23,7 +23,7 @@ export const LocationProvider = ({ children }: { children: JSX.Element }) => {
       .then((status: string) => {
         setGeolocationStatus(status);
       })
-      .catch((error: any) => console.log({ error }));
+      .catch((error: Error) => console.log({ error }));
   }, []);
 
   return (

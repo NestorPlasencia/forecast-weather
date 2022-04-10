@@ -1,21 +1,35 @@
 .container {
     margin-bottom: 1rem;
-    flex: 0 0 180px;
+
 }
 
-.active {
-    flex: 1 0 200px;
-}
 
 @media (min-width: 576px) {
-    /* .container {
-        margin-right: 1rem;
+    .container {
+        flex: 1 1 200px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex: 1 1 auto;
     }
 
-    .container:last-child {
-        margin-right: 0rem;
-    } */
+    .active {
+        flex: 1 1 290px;
+    }
 }
+
+@media (min-width: 992px) {
+    .container {
+        flex: 1 1 auto;
+    }
+
+    .active {
+        flex: 3 1 auto;
+    }
+}
+
 
 .title {
     text-align: center;

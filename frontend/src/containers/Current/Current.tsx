@@ -40,7 +40,7 @@ const Current = () => {
                   capitalize(data.weather.current.weather[0].description)}
               </p>
             </div>
-            <div className={[styles.column, styles.grow].join(" ")}>
+            <div className={[styles.column].join(" ")}>
               <div className={styles.switch_container}>
                 <Switch
                   checked={unit === "C"}
@@ -52,19 +52,7 @@ const Current = () => {
               </div>
             </div>
             <div className={[styles.column, styles.justify_beetween].join(" ")}>
-              <dl>
-                <p className={styles.location}>
-                  {data?.location
-                    ? `${data.location.name}, ${data.location.state} - ${data.location.country}`
-                    : data?.forecast
-                    ? `${data.forecast.city.name}`
-                    : ""}
-                </p>
-                <p className={styles.date}>
-                  {data && formatLocalDateTime(data.weather.current.dt)}
-                </p>
-              </dl>
-              <dl>
+              <dl className={styles.description}>
                 <div className={styles.description_item}>
                   <dt>Wind:</dt>
                   <dd>
@@ -81,6 +69,18 @@ const Current = () => {
                   <dt>Precipitation:</dt>
                   <dd>{data && data.weather.hourly[0].pop * 100 + " %"}</dd>
                 </div>
+              </dl>
+              <dl>
+                <p className={styles.location}>
+                  {data?.location
+                    ? `${data.location.name}, ${data.location.state} - ${data.location.country}`
+                    : data?.forecast
+                    ? `${data.forecast.city.name}`
+                    : ""}
+                </p>
+                <p className={styles.date}>
+                  {data && formatLocalDateTime(data.weather.current.dt)}
+                </p>
               </dl>
             </div>
           </div>

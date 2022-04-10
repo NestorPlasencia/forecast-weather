@@ -20,7 +20,7 @@ const Day = ({ day }: { day: Daily }) => {
       }}
     >
       <Card select={active} pointer={true}>
-        <div>
+        <>
           <h3 className={styles.title}>{formatLocalDate(day.dt)}</h3>
           <div className={styles.body}>
             <img
@@ -48,7 +48,7 @@ const Day = ({ day }: { day: Daily }) => {
               </p>
             </div>
           </div>
-        </div>
+        </>
       </Card>
     </div>
   );
