@@ -15,13 +15,13 @@ const Hourly = () => {
   const today = new Date();
   const tomorrow = addDays(today, 1);
 
-  if (data?.forecast?.list) {
-    const dataTomorrow = data?.forecast?.list?.filter((e) =>
-      isSameDate(getDateFromDt(e.dt), tomorrow)
-    );
-    temps = dataTomorrow?.map((e) => e.main.temp);
-    dts = dataTomorrow?.map((e) => e.dt);
-  }
+  // if (data?.forecast?.list) {
+  //   const dataTomorrow = data?.forecast?.list?.filter((e) =>
+  //     isSameDate(getDateFromDt(e.dt), tomorrow)
+  //   );
+  //   temps = dataTomorrow?.map((e) => e.main.temp);
+  //   dts = dataTomorrow?.map((e) => e.dt);
+  // }
 
   return (
     <Container>

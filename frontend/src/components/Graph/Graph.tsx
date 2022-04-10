@@ -1,5 +1,6 @@
 import { useUnit } from "../../hooks/unit";
 import { formatTemperature } from "../../utils/formats";
+import { Spline } from "../../utils/spline";
 
 const Graph = ({
   times = [],
@@ -10,6 +11,7 @@ const Graph = ({
 }) => {
   const { unit } = useUnit();
   const n = times.length;
+  const nSmooth = 200;
   const width = 1300;
   const height = 400;
   const padding = 2;
@@ -24,6 +26,21 @@ const Graph = ({
   //paddingTop + distanceFromMinToMax + distanceFromZeroToMin + paddingBottom = height;
   const distanceFromMinToMax =
     height - paddingTop - distanceFromZeroToMin - paddingBottom;
+
+  const smoothPoints = (x: number[], y: number[], n: number) => {
+    const space = (x[x.length - 1] - x[0]) / n;
+    console.log(space);
+    const spline = new Spline(x, y);
+    const nx = [];
+    const ny = [];
+    for (let i = 0; i < n; i++) {
+      const xi = Math.round(x[0] + i * space);
+      nx.push(xi);
+      ny.push(Math.round(spline.at(xi)));
+    }
+    nx[n - 1] = x[x.length - 1];
+    return [nx, ny];
+  };
 
   const formatHours = (dt: number): string => {
     const date = new Date(dt * 1000);
@@ -49,7 +66,11 @@ const Graph = ({
 
   const generatePointsStr = (points: number[][]) => {
     let pointsStr = "";
-    for (let point of points) {
+    const x = points.map((e) => e[0]);
+    const y = points.map((e) => e[1]);
+    const [nx, ny] = smoothPoints(x, y, nSmooth);
+    const smoothedPoints = nx.map((e, i) => [e, ny[i]]);
+    for (let point of smoothedPoints) {
       pointsStr += `${point[0]},${point[1]} `;
     }
     return pointsStr;
