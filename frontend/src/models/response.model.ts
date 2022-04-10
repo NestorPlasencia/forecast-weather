@@ -1,6 +1,7 @@
 export interface Response {
-  weather: ResponseWeather;
+  weather: Weather;
   location?: Location;
+  forecast?: Forecast;
 }
 
 export interface Location {
@@ -9,18 +10,35 @@ export interface Location {
   state: string;
 }
 
-export interface ResponseWeather {
-  current: Current;
-  hourly: Hourly[];
+export interface Weather {
+  current: {
+    dt: number;
+    temp: number;
+    humidity: number;
+    wind_speed: number;
+    weather: WeatherElement[];
+  };
+  hourly:{
+    dt: number;
+    temp: number;
+    pop: number;
+  }[];
   daily: Daily[];
 }
 
-export interface Current {
-  dt: number;
-  temp: number;
-  humidity: number;
-  wind_speed: number;
-  weather: WeatherElement[];
+export interface Forecast {
+  list: {
+    main: {
+      temp: number;
+    };
+    dt: number;
+    pop: number;
+  };
+  city: {
+    name: string;
+  };
+  cod: string;
+  message: number;
 }
 
 export interface WeatherElement {
@@ -30,21 +48,14 @@ export interface WeatherElement {
   icon: string;
 }
 
+
 export interface Daily {
-  dt: number;
-  weather: WeatherElement[];
-  pop: number;
-  temp: Temp;
-}
-
-export interface Temp {
-  day: number;
-  min: number;
-  max: number;
-}
-
-export interface Hourly {
-  dt: number;
-  temp: number;
-  pop: number;
+    dt: number;
+    weather: WeatherElement[];
+    pop: number;
+    temp: {
+      day: number;
+      min: number;
+      max: number;
+    };
 }

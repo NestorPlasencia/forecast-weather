@@ -54,13 +54,11 @@ const Current = () => {
             <div className={[styles.column, styles.justify_beetween].join(" ")}>
               <dl>
                 <p className={styles.location}>
-                  {data &&
-                    data.location &&
-                    data.location.name +
-                      ", " +
-                      data.location.state +
-                      " - " +
-                      data.location.country}
+                  {data?.location
+                    ? `${data.location.name}, ${data.location.state} - ${data.location.country}`
+                    : data?.forecast
+                    ? `${data.forecast.city.name}`
+                    : ""}
                 </p>
                 <p className={styles.date}>
                   {data && formatLocalDateTime(data.weather.current.dt)}
