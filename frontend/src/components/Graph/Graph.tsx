@@ -1,5 +1,6 @@
 import { useUnit } from "../../hooks/unit";
 import { formatTemperature } from "../../utils/utils";
+
 const Graph = ({ times, temps }: { times: number[]; temps: number[] }) => {
   const { unit } = useUnit();
 

@@ -35,7 +35,6 @@ export const DataProvider = ({ children }: { children: JSX.Element }) => {
   useEffect(() => {
     if (success !== undefined) {
       setData(success);
-      console.log({ success });
     }
   }, [success]);
 

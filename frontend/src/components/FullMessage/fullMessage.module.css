@@ -1,0 +1,36 @@
+.full_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100vh;
+}
+
+.loading {
+    width: 150px;
+
+}
+
+.rotate {
+    animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.full_container p.loading_text {
+    font-size: 2rem;
+    color: #72b9d5;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    margin: 1rem;
+    text-align: center;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

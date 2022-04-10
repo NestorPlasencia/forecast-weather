@@ -1,9 +1,6 @@
 import styles from "./container.module.css";
 
-type Props = {
-  children: JSX.Element;
-};
-const Container = ({ children }: Props) => {
+const Container = ({ children }: { children: JSX.Element }) => {
   return <section className={styles.container}>{children}</section>;
 };
 
