@@ -15,7 +15,9 @@ export async function getForecast({
     const data = await response.json();
     if (data?.cod) throw errorCodeMessage(data.cod, capitalize(data.message));
     if (instanceOfResponse(data)) return data;
-    throw new Error("No data found in this location.");
+    if (Object.keys(data).length === 0)
+      throw new Error("No data found in this location.");
+    throw new Error("Data is not as expected.");
   } catch (error: unknown) {
     throw error;
   }

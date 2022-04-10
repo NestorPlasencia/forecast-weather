@@ -26,7 +26,7 @@ const App = () => {
         )}
       {loading && <FullMessage message={"Loading ..."} />}
       {error && <FullMessage message={getErrorMessage(error)} icon="11d" />}
-      {data?.location && (
+      {data?.weather && (
         <>
           <Current />
           <Daily />

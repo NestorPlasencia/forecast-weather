@@ -1,6 +1,6 @@
 export interface Response {
-  location: Location;
   weather: ResponseWeather;
+  location?: Location;
 }
 
 export interface Location {

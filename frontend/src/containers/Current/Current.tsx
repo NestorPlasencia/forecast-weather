@@ -55,6 +55,7 @@ const Current = () => {
               <dl>
                 <p className={styles.location}>
                   {data &&
+                    data.location &&
                     data.location.name +
                       ", " +
                       data.location.state +

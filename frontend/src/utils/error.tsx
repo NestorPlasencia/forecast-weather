@@ -31,5 +31,5 @@ export const errorCodeMessage = (status: number, message: string) => {
 };
 
 export const instanceOfResponse = (data: any): data is Response => {
-  return "location" in data;
+  return "weather" in data;
 };

@@ -14,7 +14,7 @@ export interface Forecast {
 export interface ForecastList {
     dt: number;
     main: WeatherMainInfo;
-    weather: Weather;
+    weather: Weather[];
     clouds: {
         all: number;
     };
