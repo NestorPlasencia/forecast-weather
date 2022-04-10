@@ -1,7 +1,7 @@
 import {OneCallExport} from "../dto/onecall.dto";
-import {GeolocationExport} from "../dto/geolocation.dto";
+import {ForecastExport} from "../dto/forecast.dto";
 
 export interface Response {
     weather: OneCallExport;
-    location: GeolocationExport;
+    forecast: ForecastExport;
 }

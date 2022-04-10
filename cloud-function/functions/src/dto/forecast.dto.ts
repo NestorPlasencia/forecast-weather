@@ -10,6 +10,6 @@ export interface ForecastListExport extends Pick<ForecastList, "dt" |"pop" > {
 }
 
 export interface ForecastExport extends Pick<Forecast, "cod" | "message" > {
-    list: ForecastListExport[]
+    list: ForecastListExport[];
     city: Pick<City, "name">;
 }
