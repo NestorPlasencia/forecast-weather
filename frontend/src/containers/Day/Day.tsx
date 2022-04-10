@@ -1,15 +1,25 @@
 import { Card } from "../../components/Card/Card";
-import styles from "./day.module.css";
-import { Daily } from "../../models/response.model";
-import { capitalize } from "../../utils/utils";
-import { formatTemperature, formatLocalDate } from "../../utils/formats";
+import { useSelection } from "../../hooks/selection";
 import { useUnit } from "../../hooks/unit";
+import { Daily } from "../../models/response.model";
+import { formatLocalDate, formatTemperature } from "../../utils/formats";
+import { capitalize, getDateFromDt, isSameDate } from "../../utils/utils";
+import styles from "./day.module.css";
 
 const Day = ({ day }: { day: Daily }) => {
   const { unit } = useUnit();
+  const { selectDay, setSelectDay } = useSelection();
+  const active = selectDay && isSameDate(getDateFromDt(day.dt), selectDay);
   return (
-    <div className={styles.container}>
-      <Card>
+    <div
+      className={[styles.container, active ? styles.active : ""].join(" ")}
+      onClick={() => {
+        if (setSelectDay) {
+          setSelectDay(getDateFromDt(day.dt));
+        }
+      }}
+    >
+      <Card select={active} pointer={true}>
         <div>
           <h3 className={styles.title}>{formatLocalDate(day.dt)}</h3>
           <div className={styles.body}>

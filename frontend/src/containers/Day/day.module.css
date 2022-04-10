@@ -1,16 +1,20 @@
 .container {
     margin-bottom: 1rem;
-    flex: 1 1 auto;
+    flex: 0 0 180px;
+}
+
+.active {
+    flex: 1 0 200px;
 }
 
 @media (min-width: 576px) {
-    .container {
+    /* .container {
         margin-right: 1rem;
     }
 
-    .container :last-child() {
+    .container:last-child {
         margin-right: 0rem;
-    }
+    } */
 }
 
 .title {

@@ -3,32 +3,38 @@ import { Container } from "../../components/Container/Container";
 import { Graph } from "../../components/Graph/Graph";
 import { Title } from "../../components/Title/Title";
 import { useData } from "../../hooks/data";
-import { addDays, getDateFromDt, isSameDate } from "../../utils/utils";
+import { useSelection } from "../../hooks/selection";
+import { formatLocalDateLong } from "../../utils/formats";
+import { getDateFromDt, isSameDate } from "../../utils/utils";
 
 const Hourly = () => {
   const { data } = useData();
-
+  const { selectDay } = useSelection();
   let hourly = data?.weather.hourly;
-  let temps = hourly?.map((e) => e.temp).filter((e, i) => i % 2 === 0);
-  let dts = hourly?.map((e) => e.dt).filter((e, i) => i % 2 === 0);
-
+  let temps: number[] = [];
+  let dts: number[] = [];
+  let title: string = "Next 24 hours";
   const today = new Date();
-  const tomorrow = addDays(today, 1);
-
-  // if (data?.forecast?.list) {
-  //   const dataTomorrow = data?.forecast?.list?.filter((e) =>
-  //     isSameDate(getDateFromDt(e.dt), tomorrow)
-  //   );
-  //   temps = dataTomorrow?.map((e) => e.main.temp);
-  //   dts = dataTomorrow?.map((e) => e.dt);
-  // }
+  if (selectDay && hourly && isSameDate(today, selectDay)) {
+    temps = hourly?.map((e) => e.temp).filter((e, i) => i % 2 === 0);
+    dts = hourly?.map((e) => e.dt).filter((e, i) => i % 2 === 0);
+  } else {
+    if (data?.forecast?.list && selectDay) {
+      const dataTomorrow = data?.forecast?.list?.filter((e) =>
+        isSameDate(getDateFromDt(e.dt), selectDay)
+      );
+      temps = dataTomorrow?.map((e) => e.main.temp);
+      dts = dataTomorrow?.map((e) => e.dt);
+      title = formatLocalDateLong(dts[0]);
+    }
+  }
 
   return (
     <Container>
       <Card full={true}>
-        {data?.weather.hourly && (
+        {data?.weather.hourly && selectDay && (
           <>
-            <Title title="Next 24 hours" padding={true} />
+            <Title title={title} padding={true} />
             <Graph times={dts} temps={temps} />
           </>
         )}

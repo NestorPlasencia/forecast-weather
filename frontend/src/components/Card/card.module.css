@@ -9,7 +9,10 @@
     padding: 0;
 }
 
-
-.card.select {
+.select {
     background: linear-gradient(143.98deg, rgba(255, 255, 255, 0.42) 99.99%, rgba(255, 255, 255, 0.22) 100%);
+}
+
+.pointer {
+    cursor: pointer;
 }

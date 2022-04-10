@@ -1,6 +1,9 @@
 @media (min-width: 576px) {
     .day_list {
-        display: flex;
+        display: inline-flex;
+        width: 100%;
         flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
     }
 }

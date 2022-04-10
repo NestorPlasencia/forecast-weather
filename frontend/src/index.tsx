@@ -4,6 +4,7 @@ import "./index.css";
 import { LocationProvider } from "./contexts/Location";
 import { DataProvider } from "./contexts/Data";
 import { UnitProvider } from "./contexts/Unit";
+import { SelectionProvider } from "./contexts/Selection";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Failed to find the root element");
@@ -13,7 +14,9 @@ root.render(
   <UnitProvider>
     <LocationProvider>
       <DataProvider>
-        <App />
+        <SelectionProvider>
+          <App />
+        </SelectionProvider>
       </DataProvider>
     </LocationProvider>
   </UnitProvider>

@@ -28,6 +28,13 @@ export const formatLocalDate = (dt: number) => {
   return dayOfWeek + " " + day;
 };
 
+export const formatLocalDateLong = (dt: number) => {
+  const date = new Date(dt * 1000);
+  const dayOfWeek = date.toLocaleString("en-us", { weekday: "long" });
+  const day = date.getDate();
+  return dayOfWeek + " " + day;
+};
+
 export const formatLocalDateTime = (dt: number) => {
   const date = new Date(dt * 1000);
   const dayOfWeek = date.toLocaleString("en-us", { weekday: "long" });
