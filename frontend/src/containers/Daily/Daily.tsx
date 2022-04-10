@@ -1,9 +1,11 @@
 import { Container } from "../../components/Container/Container";
 import { Title } from "../../components/Title/Title";
+import { useData } from "../../hooks/data";
 import { Day } from "../Day/Day";
 import styles from "./daily.module.css";
 
 const Daily = () => {
+  const { data } = useData();
   return (
     <Container>
       <div>
@@ -11,12 +13,9 @@ const Daily = () => {
           <Title title="Daily Forecast" />
         </div>
         <div className={styles.day_list}>
-          <Day />
-          <Day />
-          <Day />
-          <Day />
-          <Day />
-          <Day />
+          {data?.weather.daily?.map((day, i) => (
+            <Day day={day} key={i} />
+          ))}
         </div>
       </div>
     </Container>

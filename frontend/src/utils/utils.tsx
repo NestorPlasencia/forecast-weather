@@ -33,7 +33,9 @@ export const capitalize = (str: string) => {
 
 export const formatLocalDate = (dt: number) => {
   const date = new Date(dt * 1000);
-  return date.toLocaleString().split(",")[0];
+  const dayOfWeek = date.toLocaleString("en-us", { weekday: "short" });
+  const day = date.getDate();
+  return dayOfWeek + " " + day;
 };
 
 //
@@ -50,7 +52,6 @@ export const formatLocalDateTime = (dt: number) => {
   return `${dayOfWeek}, ${month} ${day} ${time}`;
 };
 
-//
 export const getStringMonth = (date: Date) => {
   const month = [
     "January",
