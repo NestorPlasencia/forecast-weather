@@ -1,8 +1,29 @@
 import { useUnit } from "../../hooks/unit";
 import { formatTemperature } from "../../utils/formats";
 
-const Graph = ({ times, temps }: { times: number[]; temps: number[] }) => {
+const Graph = ({
+  times = [],
+  temps = [],
+}: {
+  times?: number[];
+  temps?: number[];
+}) => {
   const { unit } = useUnit();
+  const n = times.length;
+  const width = 1300;
+  const height = 400;
+  const padding = 2;
+  const paddingBottom = 50;
+  const paddingTop = 50;
+  const innerWidth = width - padding * 2;
+  const space = innerWidth / (n - 1);
+  const centerLabels = 25;
+  const distanceTimeLabelsFromGraph = 20;
+  const distanceTempLabelsFromGraph = 10;
+  const distanceFromZeroToMin = 200;
+  //paddingTop + distanceFromMinToMax + distanceFromZeroToMin + paddingBottom = height;
+  const distanceFromMinToMax =
+    height - paddingTop - distanceFromZeroToMin - paddingBottom;
 
   const formatHours = (dt: number): string => {
     const date = new Date(dt * 1000);
@@ -15,10 +36,14 @@ const Graph = ({ times, temps }: { times: number[]; temps: number[] }) => {
   const generateTemperaturePoints = (temps: number[]) => {
     const max = Math.max(...temps);
     const min = Math.min(...temps);
-    const cover = (max - min) / 100;
-    const scaledTemps = temps.map((e) => Math.round((e - min) / cover) + 200);
-    const invertedScaledTemps = scaledTemps.map((e) => 500 - (e + 50));
-    const points = invertedScaledTemps.map((e, i) => [(i + 1) * 50, e]);
+    const cover = (max - min) / distanceFromMinToMax;
+    const scaledTemps = temps.map(
+      (e) => Math.round((e - min) / cover) + distanceFromZeroToMin
+    );
+    const invertedScaledTemps = scaledTemps.map(
+      (e) => height - (e + paddingBottom)
+    );
+    const points = invertedScaledTemps.map((e, i) => [padding + i * space, e]);
     return points;
   };
 
@@ -35,18 +60,30 @@ const Graph = ({ times, temps }: { times: number[]; temps: number[] }) => {
   const pointsStr = generatePointsStr(points);
 
   let tLabels = [];
-  for (let i = 0; i < temps.length; i = i + 2) {
+  for (let i = 0; i < temps.length; i = i + 1) {
+    const corrector = ((i - n / 2) * space) / (n * 2);
     tLabels.push(
-      <text key={i} x={(i + 1) * 50 - 20} fill="#eee" y={points[i][1] - 20}>
+      <text
+        key={i}
+        x={padding + i * space - corrector - centerLabels}
+        fill="#eee"
+        y={points[i][1] - distanceTempLabelsFromGraph}
+      >
         {unit && formatTemperature(unit, temps[i])}
       </text>
     );
   }
 
   let xLabels = [];
-  for (let i = 0; i < hours.length; i = i + 2) {
+  for (let i = 0; i < hours.length; i = i + 1) {
+    const corrector = ((i - n / 2) * space) / (n * 2);
     xLabels.push(
-      <text key={i} x={(i + 1) * 50 - 20} fill="#eee" y="470">
+      <text
+        key={i}
+        x={padding + i * space - corrector - centerLabels}
+        fill="#eee"
+        y={height - paddingBottom + distanceTimeLabelsFromGraph}
+      >
         {hours[i]}
       </text>
     );
@@ -56,7 +93,7 @@ const Graph = ({ times, temps }: { times: number[]; temps: number[] }) => {
     <div className="graph">
       <svg
         version="1.2"
-        viewBox="0 0 1300 500"
+        viewBox={`0 0 ${width} ${height}`}
         xmlns="http://www.w3.org/2000/svg"
         className="graph"
         id="graph"
@@ -69,7 +106,12 @@ const Graph = ({ times, temps }: { times: number[]; temps: number[] }) => {
           {tLabels}
         </g>
         <g className="grid y-grid" id="y-grid">
-          <line x1="50" x2="1250" y1="450" y2="450"></line>
+          <line
+            x1={padding}
+            x2={innerWidth + padding}
+            y1={height - paddingBottom}
+            y2={height - paddingBottom}
+          ></line>
         </g>
         <g className="labels y-labels"></g>
         <polyline
@@ -83,7 +125,9 @@ const Graph = ({ times, temps }: { times: number[]; temps: number[] }) => {
           fill="#eee"
           fillOpacity="0.2"
           stroke="none"
-          points={`50,450 ${pointsStr} 1250,450`}
+          points={`${padding},${height - paddingBottom} ${pointsStr} ${
+            innerWidth + padding
+          },${height - paddingBottom}`}
         ></polygon>
       </svg>
     </div>

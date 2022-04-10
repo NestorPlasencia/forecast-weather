@@ -1,11 +1,15 @@
-.title{
+.title {
     font-size: 1.4rem;
     font-weight: 600;
     text-align: center;
 }
 
+.padding {
+    padding: 1rem;
+}
+
 @media (min-width: 576px) {
-    .title{
+    .title {
         text-align: start;
     }
 }

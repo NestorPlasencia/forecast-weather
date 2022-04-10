@@ -33,7 +33,7 @@ export interface Forecast {
     };
     dt: number;
     pop: number;
-  };
+  }[];
   city: {
     name: string;
   };

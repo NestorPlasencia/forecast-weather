@@ -1,12 +1,15 @@
-.container{
+.container {
     margin-bottom: 1rem;
-    flex-shrink: 0;
+    flex: 1 1 auto;
 }
 
 @media (min-width: 576px) {
     .container {
-        margin-bottom: 0;
         margin-right: 1rem;
+    }
+
+    .container :last-child() {
+        margin-right: 0rem;
     }
 }
 
@@ -61,7 +64,7 @@
     font-weight: 500;
 }
 
-.description{
+.description {
     text-align: center;
     font-size: 0.8rem;
 }

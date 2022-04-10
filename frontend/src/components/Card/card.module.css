@@ -1,10 +1,14 @@
-
 .card {
     background: linear-gradient(143.98deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.22) 100%);
     backdrop-filter: blur(50px);
     border-radius: 0.5rem;
     padding: 1rem;
 }
+
+.full {
+    padding: 0;
+}
+
 
 .card.select {
     background: linear-gradient(143.98deg, rgba(255, 255, 255, 0.42) 99.99%, rgba(255, 255, 255, 0.22) 100%);

@@ -32,3 +32,21 @@ export const getStringMonth = (date: Date) => {
   ];
   return month[date.getMonth()];
 };
+
+export const isSameDate = (date1: Date, date2: Date): boolean => {
+  return (
+    date1.getDate() === date2.getDate() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getFullYear() === date2.getFullYear()
+  );
+};
+
+export const getDateFromDt = (dt: number): Date => {
+  return new Date(dt * 1000);
+};
+
+export const addDays = (date: Date, days: number): Date => {
+  const newDate = new Date(date);
+  newDate.setDate(newDate.getDate() + days);
+  return newDate;
+};
