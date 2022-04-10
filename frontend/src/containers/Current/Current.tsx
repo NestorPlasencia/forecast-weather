@@ -5,12 +5,12 @@ import { Title } from "../../components/Title/Title";
 import styles from "./current.module.css";
 import { useUnit } from "../../hooks/unit";
 import { useData } from "../../hooks/data";
+import { capitalize } from "../../utils/utils";
 import {
-  capitalize,
   formatLocalDateTime,
   formatTemperature,
   formatWindSpeed,
-} from "../../utils/utils";
+} from "../../utils/formats";
 
 const Current = () => {
   const { unit, changeUnit } = useUnit();

@@ -4,7 +4,11 @@ import { Daily } from "./containers/Daily/Daily";
 import { Hourly } from "./containers/Hourly/Hourly";
 import { useData } from "./hooks/data";
 import { useLocation } from "./hooks/location";
-import { errorCodeMessage, getGeoLocationMessage } from "./utils/utils";
+import { getErrorMessage } from "./utils/error";
+import {
+  getGeoLocationMessage,
+  getGeoLocationErrorIcon,
+} from "./utils/location";
 
 const App = () => {
   const { data, loading, error } = useData();
@@ -12,25 +16,16 @@ const App = () => {
 
   return (
     <main>
-      <></>
       {position?.lat === null &&
         position?.lon === null &&
         geolocationStatus && (
           <FullMessage
             message={getGeoLocationMessage(geolocationStatus)}
-            icon={
-              geolocationStatus === "granted"
-                ? "01n"
-                : geolocationStatus === "prompt"
-                ? "solar-eclipse"
-                : "11d"
-            }
+            icon={getGeoLocationErrorIcon(geolocationStatus)}
           />
         )}
       {loading && <FullMessage message={"Loading ..."} />}
-      {error && error?.status && typeof error.status === "number" && (
-        <FullMessage message={errorCodeMessage(error.status)} icon="11d" />
-      )}
+      {error && <FullMessage message={getErrorMessage(error)} icon="11d" />}
       {data?.location && (
         <>
           <Current />

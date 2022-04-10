@@ -48,7 +48,7 @@ const FullMessage = ({
               />
             </clipPath>
           </defs>
-          <g clip-path="url(#a)">
+          <g clipPath="url(#a)">
             <g>
               <path
                 fill="none"
@@ -174,7 +174,7 @@ const FullMessage = ({
               />
             </clipPath>
           </defs>
-          <g clip-path="url(#a)">
+          <g clipPath="url(#a)">
             <g>
               <path
                 fill="none"

@@ -6,7 +6,7 @@ import { Response } from "../models/response.model";
 interface AppContextInterface {
   data: Response;
   loading: boolean;
-  error: { [key: string]: string };
+  error: Error;
 }
 
 export const Data = createContext<Partial<AppContextInterface>>({});

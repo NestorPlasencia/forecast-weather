@@ -1,8 +1,5 @@
-import { Response } from "../models/response.model";
-
-const instanceOfResponse = (data: any): data is Response => {
-  return "location" in data;
-};
+import { errorCodeMessage, instanceOfResponse } from "../utils/error";
+import { capitalize } from "../utils/utils";
 
 export async function getForecast({
   lat,
@@ -12,14 +9,14 @@ export async function getForecast({
   lon?: number;
 }) {
   try {
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/forecast/?lat=${lat}&lon=${lon}`
-    );
+    const URL = process.env.REACT_APP_API_URL;
+    const response = await fetch(`${URL}/forecast/?lat=${lat}&lon=${lon}`);
+    if (!response.ok) throw response.statusText;
     const data = await response.json();
-    if (data?.status || data?.cod) throw data;
+    if (data?.cod) throw errorCodeMessage(data.cod, capitalize(data.message));
     if (instanceOfResponse(data)) return data;
-    return data;
-  } catch (error) {
+    throw new Error("No data found in this location.");
+  } catch (error: unknown) {
     throw error;
   }
 }

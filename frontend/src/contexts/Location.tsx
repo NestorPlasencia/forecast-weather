@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { getGeoLocationStatus, getLocation } from "../utils/utils";
+import { getGeoLocationStatus, getLocation } from "../utils/location";
 
 interface AppContextInterface {
   position: { lat: null | number; lon: null | number };

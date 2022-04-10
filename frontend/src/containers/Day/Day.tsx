@@ -2,7 +2,7 @@ import { Card } from "../../components/Card/Card";
 import styles from "./day.module.css";
 import { Daily } from "../../models/response.model";
 import { capitalize } from "../../utils/utils";
-import { formatTemperature, formatLocalDate } from "../../utils/utils";
+import { formatTemperature, formatLocalDate } from "../../utils/formats";
 import { useUnit } from "../../hooks/unit";
 
 const Day = ({ day }: { day: Daily }) => {
