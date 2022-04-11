@@ -3,7 +3,7 @@
 - **Design:** [https://www.figma.com/file/oxtq7PzoixHCXxNHpKF9lR/Weather-Forecast](https://www.figma.com/file/oxtq7PzoixHCXxNHpKF9lR/Weather-Forecast)
 - **Preview:** [https://nestorplasencia.github.io/forecast-weather/](https://nestorplasencia.github.io/forecast-weather/)
 
-  ![frontend-response](https://raw.githubusercontent.com/NestorPlasencia/forecast-weather-docs/main/img/frontend-response.png)
+  ![animation](https://raw.githubusercontent.com/NestorPlasencia/forecast-weather-docs/main/img/animation.gif)
 
 - **Architecture**
   ![architecture.png](https://raw.githubusercontent.com/NestorPlasencia/forecast-weather-docs/main/img/architecture.png)
