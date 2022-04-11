@@ -52,7 +52,7 @@ I was inspired by Google and Microsoft weather services, taking information stru
 
 ## 2. Resource Planning
 
-Based on the structure of the data I found that the open weather free plan can fully cover all the required data.
+Based on the structure of the information I found that the openWeather API with free plan, can fully cover all the required data.
 
 ### API REST resource
 
@@ -199,6 +199,7 @@ Use Figma software to design the user interface of the application, both for des
 - For the frontend in development, ReactJS is used in its version with TypeScript, the resulting files are hosted for free on github pages and made available for consumption 100% of the time.
 - In order not to expose the API we need to use server side as middleware, to fulfill two functions: the first is to add the API_KEY of openWeather and the second is to filter the data from open weather to the browser for a lower load of information.
 - To implement this part of the server side, a firebase cloud function is used whose core is NodeJS and TypeScript is used in the development part.
+- I did not choose to deploy a complete backend, since the functions performed by the server side are very specific and require minimal resource consumption.
 
 ![architecture.png](https://raw.githubusercontent.com/NestorPlasencia/forecast-weather-docs/main/img/architecture.png)
 
@@ -226,7 +227,7 @@ git clone https://github.com/NestorPlasencia/forecast-weather.git
 API_KEY=YOUR_API_KEY
 ```
 
-**Install dependencies in `cloud-function/functions` fonder**
+**Install dependencies in `cloud-function/functions` folder**
 
 ```sh
 cd cloud-function/functions
@@ -337,7 +338,7 @@ the result should be the following
 npm install -g firebase-tools
 ```
 
-**Go to the `cloud-function/functions` fonder**
+**Go to the `cloud-function/functions` folder**
 
 ```
 cd ../cloud-function/functions
