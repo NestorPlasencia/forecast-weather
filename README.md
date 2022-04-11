@@ -3,10 +3,31 @@
 - **Design:** [https://www.figma.com/file/oxtq7PzoixHCXxNHpKF9lR/Weather-Forecast](https://www.figma.com/file/oxtq7PzoixHCXxNHpKF9lR/Weather-Forecast)
 - **Preview:** [https://nestorplasencia.github.io/forecast-weather/](https://nestorplasencia.github.io/forecast-weather/)
 
-![frontend-response](https://raw.githubusercontent.com/NestorPlasencia/forecast-weather-docs/main/img/frontend-response.png)
+  ![frontend-response](https://raw.githubusercontent.com/NestorPlasencia/forecast-weather-docs/main/img/frontend-response.png)
 
 - **Architecture**
   ![architecture.png](https://raw.githubusercontent.com/NestorPlasencia/forecast-weather-docs/main/img/architecture.png)
+
+**Table of content**
+
+- [1. Requirements Analysis](#1-requirements-analysis)
+  - [Funcional Requirements](#funcional-requirements)
+  - [Research & inspiration](#research---inspiration)
+- [2. Resource Planning](#2-resource-planning)
+  - [API REST resource](#api-rest-resource)
+  - [Information Structure](#information-structure)
+- [3. Design](#3-design)
+  - [Glassmorphism](#glassmorphism)
+  - [Icons](#icons)
+  - [Graph](#graph)
+  - [Figma](#figma)
+- [4. Development](#4-development)
+  - [Architecture](#architecture)
+  - [Server Development](#server-development)
+  - [Frontend Development](#frontend-development)
+- [5. Deploy](#5-deploy)
+  - [Server deploy](#server-deploy)
+  - [Frontend deploy](#frontend-deploy)
 
 ## 1. Requirements Analysis
 
@@ -150,8 +171,8 @@ Both in microsoft and in google there is a graph that shows the evolution of the
 I design a graph component that shows the temperature each day for both desktop and mobile
 
 <p float="left">
-   <img src="img/graph-desktop.png" width="500"/>
-  <img src="img/graph-mobile.png" width="150"/>
+   <img src="https://raw.githubusercontent.com/NestorPlasencia/forecast-weather-docs/main/img/graph-desktop.png" width="500"/>
+  <img src="https://raw.githubusercontent.com/NestorPlasencia/forecast-weather-docs/main/img/graph-mobile.png" width="150"/>
 </p>
 
 ### Figma
@@ -160,6 +181,8 @@ Use Figma software to design the user interface of the application, both for des
 
 ![Laptop](https://raw.githubusercontent.com/NestorPlasencia/forecast-weather-docs/main/img/Laptop.png)
 ![Mobile](https://raw.githubusercontent.com/NestorPlasencia/forecast-weather-docs/main/img/Mobile.png)
+
+[https://www.figma.com/file/oxtq7PzoixHCXxNHpKF9lR/Weather-Forecast](https://www.figma.com/file/oxtq7PzoixHCXxNHpKF9lR/Weather-Forecast)
 
 ## 4. Development
 
