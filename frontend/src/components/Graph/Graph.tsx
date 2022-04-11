@@ -5,18 +5,28 @@ import { Spline } from "../../utils/spline";
 const Graph = ({
   times = [],
   temps = [],
+  padding = 2,
+  paddingBottom = 50,
+  paddingTop = 50,
+  showTemperature = true,
+  showHours = true,
+  opacity = 0.2,
 }: {
   times?: number[];
   temps?: number[];
+  padding?: number;
+  paddingBottom?: number;
+  paddingTop?: number;
+  showTemperature?: boolean;
+  showHours?: boolean;
+  opacity?: number;
 }) => {
   const { unit } = useUnit();
   const n = times.length;
   const nSmooth = 200;
   const width = 1300;
   const height = 400;
-  const padding = 2;
-  const paddingBottom = 50;
-  const paddingTop = 50;
+
   const innerWidth = width - padding * 2;
   const space = innerWidth / (n - 1);
   const centerLabels = 25;
@@ -72,33 +82,37 @@ const Graph = ({
   const pointsStr = generatePointsStr(points);
 
   let tLabels = [];
-  for (let i = 0; i < temps.length; i = i + 1) {
-    const corrector = ((i - n / 2) * space) / (n * 2);
-    tLabels.push(
-      <text
-        key={i}
-        x={padding + i * space - corrector - centerLabels}
-        fill="#eee"
-        y={points[i][1] - distanceTempLabelsFromGraph}
-      >
-        {unit && formatTemperature(unit, temps[i])}
-      </text>
-    );
+  if (showTemperature) {
+    for (let i = 0; i < temps.length; i = i + 1) {
+      const corrector = ((i - n / 2) * space) / (n * 2);
+      tLabels.push(
+        <text
+          key={i}
+          x={padding + i * space - corrector - centerLabels}
+          fill="#eee"
+          y={points[i][1] - distanceTempLabelsFromGraph}
+        >
+          {unit && formatTemperature(unit, temps[i])}
+        </text>
+      );
+    }
   }
 
   let xLabels = [];
-  for (let i = 0; i < hours.length; i = i + 1) {
-    const corrector = ((i - n / 2) * space) / (n * 2);
-    xLabels.push(
-      <text
-        key={i}
-        x={padding + i * space - corrector - centerLabels}
-        fill="#eee"
-        y={height - paddingBottom + distanceTimeLabelsFromGraph}
-      >
-        {hours[i]}
-      </text>
-    );
+  if (showHours) {
+    for (let i = 0; i < hours.length; i = i + 1) {
+      const corrector = ((i - n / 2) * space) / (n * 2);
+      xLabels.push(
+        <text
+          key={i}
+          x={padding + i * space - corrector - centerLabels}
+          fill="#eee"
+          y={height - paddingBottom + distanceTimeLabelsFromGraph}
+        >
+          {hours[i]}
+        </text>
+      );
+    }
   }
 
   return (
@@ -126,16 +140,19 @@ const Graph = ({
           ></line>
         </g>
         <g className="labels y-labels"></g>
-        <polyline
-          fill="none"
-          stroke="#eee"
-          strokeWidth="2"
-          id="polyline"
-          points={pointsStr}
-        />
+        {showTemperature && (
+          <polyline
+            fill="none"
+            stroke="#eee"
+            strokeWidth="2"
+            id="polyline"
+            points={pointsStr}
+          />
+        )}
+
         <polygon
           fill="#eee"
-          fillOpacity="0.2"
+          fillOpacity={opacity}
           stroke="none"
           points={`${padding},${height - paddingBottom} ${pointsStr} ${
             innerWidth + padding

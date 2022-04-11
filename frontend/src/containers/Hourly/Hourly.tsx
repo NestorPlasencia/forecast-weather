@@ -9,6 +9,7 @@ import { useSelection } from "../../hooks/selection";
 import { formatLocalDateLong } from "../../utils/formats";
 import { getDateFromDt, isSameDate } from "../../utils/utils";
 import { Hour } from "../Hour/Hour";
+import styles from "./hourly.module.css";
 
 const Hourly = () => {
   const { data } = useData();
@@ -39,16 +40,29 @@ const Hourly = () => {
           <>
             <Title title={title} padding={true} />
             <Hidder size="xs" base="show">
-              <Graph times={dts} temps={temps} />
+              <Graph times={dts} temps={temps} opacity={0.3} />
             </Hidder>
             <Hidder size="xs" base="hide">
-              <Padder>
-                <>
-                  {temps.map((e, i) => (
-                    <Hour dt={dts[i]} temp={e} key={e} />
-                  ))}
-                </>
-              </Padder>
+              <>
+                <div className={styles.graph}>
+                  <Graph
+                    times={dts}
+                    temps={temps}
+                    paddingBottom={0}
+                    paddingTop={50}
+                    showTemperature={false}
+                    showHours={false}
+                    opacity={0.12}
+                  />
+                </div>
+                <Padder>
+                  <>
+                    {temps.map((e, i) => (
+                      <Hour dt={dts[i]} temp={e} key={e} />
+                    ))}
+                  </>
+                </Padder>
+              </>
             </Hidder>
           </>
         )}

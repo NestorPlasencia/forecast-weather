@@ -1,0 +1,7 @@
+.graph {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    transform-origin: 0 100%;
+    transform: scaleY(2);
+}
